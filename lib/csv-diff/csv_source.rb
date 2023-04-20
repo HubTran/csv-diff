@@ -104,7 +104,7 @@ class CSVDiff
                 mode_string = options[:encoding] ? "r:#{options[:encoding]}" : 'r'
                 csv_options = options.fetch(:csv_options, {})
                 @path = source
-                source = CSV.open(@path, mode_string, csv_options).readlines
+                source = CSV.open(@path, mode_string, **csv_options).readlines
             elsif !source.is_a?(Enumerable) || (source.is_a?(Enumerable) && source.size > 0 &&
                                                 !source.first.is_a?(Enumerable))
                 raise ArgumentError, "source must be a path to a file or an Enumerable<Enumerable>"
